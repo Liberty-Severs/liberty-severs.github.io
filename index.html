@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>hello! | liberty severs</title>
+  <meta name="description" content="Philosopher & cognitive scientist working on agency, learning, and non-neural cognition." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Cornflower blue & marigold — vintage French postcard */
+      --bg:         #3e5d8e;
+      --bg-soft:    #4d6ea0;
+      --ink:        #f3e9cf;
+      --ink-soft:   #c9b88a;
+      --rule:       #6e88b0;
+      --accent:     #f0c43d;
+      --accent-soft:#d4a832;
+      --gold:       #e8b224;
+      --serif-display: "Fraunces", Georgia, serif;
+      --serif-body:    "Newsreader", Georgia, serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--serif-body);
+      font-size: 18px;
+      line-height: 1.65;
+      font-weight: 380;
+      -webkit-font-smoothing: antialiased;
+      padding: 3rem 1.5rem 5rem;
+      background-image:
+        radial-gradient(circle at 20% 0%, rgba(240, 196, 61, 0.10), transparent 45%),
+        radial-gradient(circle at 80% 100%, rgba(255, 255, 255, 0.04), transparent 55%);
+    }
+
+    .wrap {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ─────────────────────────── */
+    header {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .portrait {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: var(--bg-soft);
+      border: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-size: 3rem;
+      color: var(--accent);
+    }
+    .portrait img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+
+    .titleblock h1 {
+      font-family: var(--serif-display);
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.35rem;
+    }
+    .titleblock h1 a {
+      color: inherit; text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s;
+    }
+    .titleblock h1 a:hover { border-bottom-color: var(--accent); }
+
+    .tagline {
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-weight: 300;
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      margin-bottom: 0.6rem;
+    }
+
+    .meta {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+    }
+    .meta a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px dotted var(--accent-soft);
+    }
+    .meta a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+    .meta .sep { color: var(--rule); margin: 0 0.5rem; }
+
+    /* ── SOCIAL ICONS ───────────────────── */
+    .socials {
+      display: flex; flex-wrap: wrap; gap: 1rem;
+      margin: 1.25rem 0 1.5rem;
+    }
+    .socials a {
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ink-soft);
+      transition: color .2s, transform .2s;
+    }
+    .socials a:hover { color: var(--accent); transform: translateY(-2px); }
+    .socials svg { width: 20px; height: 20px; }
+
+    /* ── NAV ────────────────────────────── */
+    nav.primary {
+      padding: 0.85rem 0;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      margin-bottom: 2.5rem;
+      font-family: var(--serif-display);
+      font-size: 1rem;
+      text-align: center;
+    }
+    nav.primary a {
+      color: var(--ink);
+      text-decoration: none;
+      font-style: italic;
+      font-weight: 400;
+      padding: 0 0.4rem;
+      transition: color .2s;
+    }
+    nav.primary a:hover { color: var(--accent); }
+    nav.primary .sep { color: var(--rule); margin: 0 0.3rem; }
+
+    /* ── SECTIONS ───────────────────────── */
+    section { margin-bottom: 2.75rem; }
+
+    h2 {
+      font-family: var(--serif-display);
+      font-weight: 400;
+      font-size: 1.75rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+    h2::before {
+      content: "§ ";
+      color: var(--accent);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    h3 {
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-weight: 400;
+      font-size: 1.25rem;
+      color: var(--ink-soft);
+      margin: 1.75rem 0 0.75rem;
+    }
+
+    p { margin-bottom: 1rem; }
+
+    a { color: var(--accent); }
+    a:hover { color: var(--ink); }
+
+    strong { font-weight: 600; color: var(--ink); }
+    em { font-style: italic; }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+      margin: 2rem 0;
+    }
+
+    /* ── LISTS ──────────────────────────── */
+    ul { list-style: none; padding-left: 0; }
+    ul li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.65rem;
+    }
+    ul li::before {
+      content: "›";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--accent);
+      font-weight: 600;
+    }
+    ul ul { margin-top: 0.5rem; }
+    ul ul li::before { content: "·"; }
+
+    /* timeline list */
+    .timeline li {
+      padding-left: 0;
+    }
+    .timeline li::before { content: none; }
+    .timeline .date {
+      font-family: var(--serif-display);
+      font-style: italic;
+      font-weight: 500;
+      color: var(--accent);
+      display: inline-block;
+      min-width: 5.5rem;
+    }
+
+    /* ── ANNOUNCEMENT ───────────────────── */
+    .announcement {
+      background: var(--bg-soft);
+      border-left: 3px solid var(--accent);
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+
+    /* ── FOOTER ─────────────────────────── */
+    footer {
+      margin-top: 4rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--ink-soft);
+      font-style: italic;
+    }
+
+    /* ── MOBILE ─────────────────────────── */
+    @media (max-width: 600px) {
+      body { padding: 2rem 1.25rem 4rem; font-size: 17px; }
+      header {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 1.25rem;
+      }
+      .portrait { margin: 0 auto; }
+      .socials { justify-content: center; }
+      .titleblock h1 { font-size: 2rem; }
+      nav.primary { font-size: 0.95rem; }
+      nav.primary a { display: inline-block; padding: 0.25rem 0.4rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <!-- ─────── HEADER ─────── -->
+    <header>
+      <!-- Replace the span below with: <img src="headshot.jpg" alt="Liberty Severs"> -->
+      <div class="portrait"><span>LS</span></div>
+
+      <div class="titleblock">
+        <h1><a href="/">liberty severs</a></h1>
+        <div class="tagline">philosopher &amp; cognitive scientist</div>
+        <div class="meta">
+          <a href="cv.pdf">CV</a>
+          <span class="sep">|</span>
+          <a href="mailto:libertysevers@gmail.com">libertysevers@gmail.com</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ─────── SOCIAL ICONS ─────── -->
+    <!-- Replace # with your real profile URLs. Remove any you don't use. -->
+    <div class="socials">
+      <a href="https://nonneuralcognition.com" aria-label="Non-Neural Cognition Lab" title="Non-Neural Cognition Lab">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 0 1-8-8c0-.6.1-1.2.2-1.8L9 15v1a2 2 0 0 0 2 2v1.9zm6.9-2.5A2 2 0 0 0 17 16h-1v-3a1 1 0 0 0-1-1H9v-2h2a1 1 0 0 0 1-1V7h2a2 2 0 0 0 2-2v-.4a8 8 0 0 1 2.9 12.9z"/></svg>
+      </a>
+      <a href="#" aria-label="Google Scholar" title="Google Scholar">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.5 0 9.3l4.8 3.1V21h14.4v-8.6l4.8-3.1L12 1.5zm0 12.4-7.2-4.6L12 4.7l7.2 4.6L12 13.9z"/></svg>
+      </a>
+      <a href="#" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 2h-17A1.5 1.5 0 0 0 2 3.5v17A1.5 1.5 0 0 0 3.5 22h17a1.5 1.5 0 0 0 1.5-1.5v-17A1.5 1.5 0 0 0 20.5 2zM8 19H5V9h3v10zM6.5 7.7a1.7 1.7 0 1 1 0-3.4 1.7 1.7 0 0 1 0 3.4zM19 19h-3v-5c0-1.2-.5-2-1.6-2-1 0-1.5.6-1.7 1.2-.1.3-.2.6-.2 1V19h-3V9h3v1.3c.4-.6 1.1-1.5 2.8-1.5 2 0 3.7 1.3 3.7 4.2V19z"/></svg>
+      </a>
+      <a href="#" aria-label="Twitter / X" title="Twitter">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/></svg>
+      </a>
+      <a href="#" aria-label="Bluesky" title="Bluesky">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.3 3.6c2.5 1.9 5.2 5.7 6.2 7.7 1-2 3.7-5.8 6.2-7.7C20.5 2.3 23 1.4 23 4.2c0 .5-.3 4.6-.5 5.2-.6 2.4-3 3-5.2 2.6 3.8.6 4.7 2.7 2.6 4.8-4 4-5.7-1-6.2-2.3-.1-.2-.1-.3-.1-.3s0 .1-.1.3c-.5 1.3-2.2 6.3-6.2 2.3-2.1-2.1-1.2-4.2 2.6-4.8-2.2.3-4.6-.3-5.2-2.6C4.3 8.8 4 4.7 4 4.2c0-2.8 2.5-1.9 2.3-.6z"/></svg>
+      </a>
+    </div>
+
+    <!-- ─────── NAVIGATION ─────── -->
+    <nav class="primary">
+      <a href="research.html">research</a>
+      <span class="sep">|</span>
+      <a href="publications.html">publications</a>
+      <span class="sep">|</span>
+      <a href="teaching.html">teaching</a>
+      <span class="sep">|</span>
+      <a href="https://nonneuralcognition.com">the lab</a>
+      <span class="sep">|</span>
+      <a href="cv.pdf">cv</a>
+    </nav>
+
+    <!-- ─────── HELLO ─────── -->
+    <section>
+      <h2>hello!</h2>
+
+      <div class="announcement">
+        📢 I'm currently a <strong>Writing-up Fellow</strong> at the <a href="https://www.kli.ac.at/">Konrad Lorenz Institute for Evolution and Cognition Research</a> in Vienna ☕, where I'm preparing my doctoral thesis for submission.
+      </div>
+
+      <p>
+        I'm a philosopher and cognitive scientist working on the topic of <strong>agency</strong>. My PhD — based jointly at the <a href="https://ciencias.ulisboa.pt/">Faculty of Sciences, University of Lisbon</a> and the <a href="https://www.ruhr-uni-bochum.de/philosophy/i/">Institute for Philosophy II at Ruhr-Universität Bochum</a> — takes a theoretical and experimental approach to the comparative problem of agency. I'm especially interested in the comparative scope of <em>reinforcement learning</em> as a framework for operationalising agency, and in how constraints and divergent evolutionary histories shape the control processes that enable agential behaviour across different species.
+      </p>
+
+      <p>
+        Before Vienna, I read for an MSc in Cognitive Neuroscience at <a href="https://www.sussex.ac.uk/">Sussex</a>, an MA in Philosophy of Mind &amp; Cognitive Science at <a href="https://www.birmingham.ac.uk/">Birmingham</a>, and a BA in Philosophy at <a href="https://www.heythrop.ac.uk/">Heythrop College, University of London</a>. I've also worked as an affect researcher at <a href="https://www.emteqlabs.com/">Emteq Labs</a> and as a research and editorial assistant to <a href="https://www.erikphoel.com/">Erik Hoel</a>.
+      </p>
+
+      <p>
+        Alongside my research, I care a great deal about building interdisciplinary research communities, science communication, and science reform. I'm a co-founder of the <a href="https://nonneuralcognition.com">Non-Neural Cognition Lab</a>, an interdisciplinary group studying agency and cognition beyond neural systems (with a particular fondness for <em>Physarum polycephalum</em>), and I serve as Vice President of the <a href="#">International Society for the Philosophy of the Sciences of the Mind</a>. I'm also a member of the PPI Group for Interoception and Mental Health at the University of Surrey.
+      </p>
+
+      <h3>quick links</h3>
+      <ul>
+        <li>The <a href="https://nonneuralcognition.com">Non-Neural Cognition Lab</a> — what we're up to with slime moulds and other strange agents</li>
+        <li>Severs &amp; Wang (2025), <em><a href="#">Continual decision-making dynamics across biological organisms</a></em>, <em>Biological Reviews</em></li>
+        <li>Becattini &amp; Severs (2025), <em><a href="#">Are ambient smart environments sufficient for developing good habits?</a></em>, <em>Synthese</em></li>
+        <li>Parvizi-Wayne &amp; Severs (2024), <em><a href="#">When the interoceptive and the conceptual clash</a></em>, <em>Cognitive, Affective, &amp; Behavioral Neuroscience</em></li>
+      </ul>
+    </section>
+
+    <hr />
+
+    <!-- ─────── NEWS ─────── -->
+    <section>
+      <h2>recent &amp; upcoming</h2>
+      <ul class="timeline">
+        <li><span class="date">Upcoming</span> &nbsp;Giving a talk on <em>Physarum polycephalum as a model organism for heterarchical control</em> at the Philosophy of Science Association (PSA) in San Diego 🇺🇸</li>
+        <li><span class="date">Apr 2026</span> &nbsp;Brown bag talk at the Konrad Lorenz Institute on foraging decisions under resource uncertainty in <em>Physarum polycephalum</em> 🇦🇹</li>
+        <li><span class="date">Mar 2026</span> &nbsp;Brown bag talk at KLI on reinforcement and the organisation of agency 🇦🇹</li>
+        <li><span class="date">Nov 2025</span> &nbsp;Gave a talk at the KLI Fall Symposium, <em>Beyond control: Reinforcement learning and the operational foundations of agency</em></li>
+        <li><span class="date">Oct 2025</span> &nbsp;Began a <strong>Writing-up Fellowship</strong> at the Konrad Lorenz Institute for Evolution and Cognition Research in Vienna 🇦🇹</li>
+        <li><span class="date">Oct 2025</span> &nbsp;Presented at the ISPSM Annual Meeting on how control structures support adaptive strategies for learning and decision-making</li>
+        <li><span class="date">Jun 2025</span> &nbsp;Talk at <a href="#">RLDM 2025</a> in Dublin on learning and decision-making in the acellular slime mould 🇮🇪</li>
+        <li><span class="date">Mar 2024</span> &nbsp;Visiting Fellow at the Institute for Philosophy II, Ruhr-Universität Bochum, supported by the Volkswagen Foundation 🇩🇪</li>
+      </ul>
+    </section>
+
+    <footer>
+      © <span id="year"></span> liberty severs &nbsp;·&nbsp; built with care, hosted on GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
